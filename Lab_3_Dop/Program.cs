@@ -10,7 +10,6 @@ namespace Lab_3_Dop
     {
         static void Main(string[] args)
         {
-            int[,] chess = new int[8, 8];
             int x, y, x1, y1;
             bool d = false;
 
@@ -25,11 +24,11 @@ namespace Lab_3_Dop
                 {
                     if (i == x && j == y)
                     {
-                        Console.Write("K");
+                        Console.Write(" K ");
                     }
                     else
                     {
-                        Console.Write("\t 1");
+                        Console.Write(" 1 ");
                     }
                 }
                 Console.WriteLine();
@@ -42,7 +41,7 @@ namespace Lab_3_Dop
 
             
             
-            if (x - 2 == x1 && y-1 == y1)
+ /*          if (x - 2 == x1 && y-1 == y1)
             {
                 d = true;
             }
@@ -76,7 +75,16 @@ namespace Lab_3_Dop
             else if (x + 1 == x1 && y + 2 == y1)
             {
                 d = true;
-            }
+            }*/
+
+            if (Math.Abs(x - x1) == 2 && Math.Abs(y - y1) == 1)
+	        {
+                d = true;
+	        }
+            else if (Math.Abs(x - x1) == 1 && Math.Abs(y - y1) == 2)
+	        {
+                d = true;
+	        }
             else
             {
                 d = false;
@@ -93,11 +101,11 @@ namespace Lab_3_Dop
                     {
                         if (i == x1 && j == y1)
                         {
-                            Console.Write("K");
+                            Console.Write(" K ");
                         }
                         else
                         {
-                            Console.Write("\t 1");
+                            Console.Write(" 1 ");
                         }
                     }
                     Console.WriteLine();
