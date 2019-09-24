@@ -17,6 +17,7 @@ namespace Lab_3
             x1 = Convert.ToInt32(Console.ReadLine());
             Console.Write("Enter y1 = ");
             y1 = Convert.ToInt32(Console.ReadLine());
+
             Console.Write("Enter x2 = ");
             x2 = Convert.ToInt32(Console.ReadLine());
             Console.Write("Enter y2 = ");
@@ -28,7 +29,8 @@ namespace Lab_3
                 Console.Write(" y = ");
                 y = Convert.ToInt32(Console.ReadLine());
 
-                if (x1 <= x && x <= x2 && y1 <= y && y <= y2)
+                if ((x > x1 && x < x2 && y < y1 && y > y2) ||
+					(x < x1 && x > x2 && y > y1 && y < y2))
 	            {
                     Console.WriteLine("Dot is valid");
 	            }else

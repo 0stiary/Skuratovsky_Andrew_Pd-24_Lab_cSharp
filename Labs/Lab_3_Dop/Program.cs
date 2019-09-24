@@ -75,7 +75,8 @@ namespace Lab_3_Dop
             else if (x + 1 == x1 && y + 2 == y1)
             {
                 d = true;
-            }*/
+            }
+*/
 
             if (Math.Abs(x - x1) == 2 && Math.Abs(y - y1) == 1)
 	        {
