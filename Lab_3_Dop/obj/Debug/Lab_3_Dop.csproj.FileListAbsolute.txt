@@ -1,7 +1,0 @@
-D:\Programms\VisualStudioProjects\C#\Univer C#\Labs\Skuratovsky_Andrew_Pd-24_Lab_cSharp\Lab_3_Dop\bin\Debug\Lab_3_Dop.exe.config
-D:\Programms\VisualStudioProjects\C#\Univer C#\Labs\Skuratovsky_Andrew_Pd-24_Lab_cSharp\Lab_3_Dop\bin\Debug\Lab_3_Dop.exe
-D:\Programms\VisualStudioProjects\C#\Univer C#\Labs\Skuratovsky_Andrew_Pd-24_Lab_cSharp\Lab_3_Dop\bin\Debug\Lab_3_Dop.pdb
-D:\Programms\VisualStudioProjects\C#\Univer C#\Labs\Skuratovsky_Andrew_Pd-24_Lab_cSharp\Lab_3_Dop\obj\Debug\Lab_3_Dop.csprojAssemblyReference.cache
-D:\Programms\VisualStudioProjects\C#\Univer C#\Labs\Skuratovsky_Andrew_Pd-24_Lab_cSharp\Lab_3_Dop\obj\Debug\Lab_3_Dop.csproj.CoreCompileInputs.cache
-D:\Programms\VisualStudioProjects\C#\Univer C#\Labs\Skuratovsky_Andrew_Pd-24_Lab_cSharp\Lab_3_Dop\obj\Debug\Lab_3_Dop.exe
-D:\Programms\VisualStudioProjects\C#\Univer C#\Labs\Skuratovsky_Andrew_Pd-24_Lab_cSharp\Lab_3_Dop\obj\Debug\Lab_3_Dop.pdb
