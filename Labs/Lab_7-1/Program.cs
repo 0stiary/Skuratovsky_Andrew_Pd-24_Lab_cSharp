@@ -10,9 +10,19 @@ namespace Lab_7_1
 	{
 		static void Main(string[] args)
 		{
-			int n =Convert.ToInt32(Console.ReadLine()); ;
+			Console.Write("Enter your number to reverse -> ");
+			long n = Convert.ToInt64(Console.ReadLine());
 
-			Console.WriteLine(n.ToString().Reverse().ToArray());
+			Console.Write(n % 10);
+
+			while((n /= 10) != 0)
+			{
+				Console.Write(n % 10);
+			}
+
+			//Console.WriteLine(n.ToString().Reverse().ToArray());
+
+
 
 		}
 	}

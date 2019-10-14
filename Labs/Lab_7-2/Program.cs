@@ -12,12 +12,17 @@ namespace Lab_7_2
 		{
 			string str = Console.ReadLine();
 
-			//char[] s = str.ToCharArray();
+			char[] s = str.ToCharArray();
+			char[] tmp = new char[s.Length];
+			for(int i = 0, j = tmp.Length - 1; i < s.Length; i++, j--)
+			{
+				tmp[i] = s[j];
+			}
 			//Array.Reverse(s);
-			//str = new string(s);
-			//Console.WriteLine(str);
+			str = new string(tmp);
+			Console.WriteLine(str);
 
-			Console.WriteLine(str.Reverse().ToArray());
+			//Console.WriteLine(str.Reverse().ToArray());
 		}
 	}
 }

@@ -15,61 +15,96 @@ namespace Lab_7_6
 
 			//Console.WriteLine(n.ToString().Reverse().ToArray());
 
-			if (it < mass.Length / 2){ 
+			if(it < mass.Length / 2)
+			{
 				char buff = mass[it];
 				mass[it] = mass[mass.Length - it - 1];
 				mass[mass.Length - it - 1] = buff;
 
 				it++;
 
-				Reverse(mass, it);					//ПОВТОРНЫЙ ВЫЗОВ! ПОЧЕМУ?:/
+				Reverse(mass, it);
 			}
 			string g = new string(mass);
 			return g;
 		}
-		static void Reverse(string str)
+		static string Reverse(char[] s, char[] tmp, int it, int j)
 		{
 
 			//char[] s = str.ToCharArray();
 			//Array.Reverse(s);
 			//str = new string(s);
 			//Console.WriteLine(str);
-
-			Console.WriteLine(str.Reverse().ToArray());
-		}
-		static void Reverse(double d)
-		{
-
-			Console.WriteLine(d);
-
-			string[] mass = d.ToString().Split('.');
-
-			//			Console.WriteLine(mass[0].GetType());
-
-			for(int i = 0; i < mass.Length; i++)
+			if(it < s.Length)
 			{
-				//mass[i] = mass[i].ToString().Reverse().ToArray();			почему не работает? -_-
-				mass[i] = new string(mass[i].Reverse().ToArray());
-
+				tmp[it] = s[j];
+				it++;
+				j--;
+				Reverse(s, tmp, it, j);
 			}
 
-			string j = String.Join(".", mass);
-			d = Convert.ToDouble(j);
-			Console.WriteLine(d);
 
+			string str = new string(tmp);
+			return str;
+			//Array.Reverse(s);
 		}
-		static string Reverse(string g, string pattern)
+		static double Reverse(bool dot, string[] mass, int it)
 		{
-			string[] mass = Regex.Split(g, pattern, RegexOptions.IgnoreCase);
-			for(int i = 0; i < mass.Length; i++)
+
+			if(it < mass.Length)
 			{
-				mass[i] = new string(mass[i].Reverse().ToArray());
+				//mass[i] = mass[i].ToString().Reverse().ToArray();			почему не работает? -_-
+
+				char[] s = mass[it].ToCharArray();                           //Перевод части числа в массив чаров
+				char[] tmp = new char[s.Length];                            //Вспомогательный массив
+
+				for(int p = 0, g = tmp.Length - 1; p < s.Length; p++, g--)
+				{
+					tmp[p] = s[g];                                          //Разворот 
+				}
+
+				mass[it] = new string(tmp);                                  //Перенос развёрнутой части
+				it++;
+
+				Reverse(dot, mass, it);
+			}
+			double dou = 0;
+			if(dot == true)
+			{
+				string str = String.Join(".", mass);                            //Соеденение числа обратно через точку
+				dou = Convert.ToDouble(str);
+			}
+			else if(dot == false)
+			{
+				string str = String.Join(",", mass);                            //Соеденение числа обратно через запятую
+				dou = Convert.ToDouble(str);
+			}
+
+			return dou;
+		}
+		static string Reverse(string[] mass, string pattern, int it)
+		{
+			if(it < mass.Length)
+			{
+
+				char[] s = mass[it].ToCharArray();                           //Перевод части строки в массив чаров
+				char[] tmp = new char[s.Length];                            //Вспомогательный массив
+
+				for(int p = 0, j = tmp.Length - 1; p < s.Length; p++, j--)
+				{
+					tmp[p] = s[j];                                          //Разворот
+				}
+
+				mass[it] = new string(tmp);                                  //Перенос развёрнутой части
+
+				//mass[it] = new string(mass[it].Reverse().ToArray());
+				it++;
+				Reverse(mass, pattern, it);
 
 				//Console.WriteLine(mass[i]);
 			}
+
 			string go = String.Join(".", mass);
-			//string pp2 = "\\s+";
-			//string dd = Regex.Replace(go, pp2, ".");
 
 			return go;
 		}
@@ -82,6 +117,8 @@ namespace Lab_7_6
 								"3 - Separate reverse parts of double number (694.326->496.623)?\n" +
 								"4 - Separate reverse parts of any string that separate by magic symbol?\n");
 			int nof;
+			int it = 0;
+			string pattern;
 			try
 			{
 				nof = Convert.ToInt32(Console.ReadLine());
@@ -96,26 +133,57 @@ namespace Lab_7_6
 				case 1:
 					Console.Write("Enter your int number -> ");
 					int n = Convert.ToInt32(Console.ReadLine());
-					char[] mass = n.ToString().ToArray();
-
-					int it = 0;
-					Console.WriteLine(Reverse(mass, it));	 
+					char[] int_mass = n.ToString().ToArray();
+					it = 0;
+					Console.WriteLine(Reverse(int_mass, it));
 					break;
 				case 2:
 					Console.WriteLine("Enter your string \n");
 					string str = Console.ReadLine();
-					Reverse(str);
+
+					char[] s = str.ToCharArray();
+					char[] tmp = new char[s.Length];
+					it = 0;
+					int j = tmp.Length - 1;
+					Console.WriteLine(Reverse(s, tmp, it, j));
 					break;
 				case 3:
 					Console.Write("Enter your double number, separate by - << . >> or << , >> (depends on system type of separeting symbol for double number) -> ");
-					double d = Convert.ToDouble(Console.ReadLine());
-					Reverse(d);
+					double dou = Convert.ToDouble(Console.ReadLine());
+
+					bool dot = false;
+					char[] vs = dou.ToString().ToCharArray();
+					for(int i = 0; i < vs.Length; i++)
+					{
+						if(vs[i] == '.')
+						{
+							dot = true;
+						}
+						else if(vs[i] == ',')
+						{
+							dot = false;
+						}
+					}
+					Console.WriteLine(dou);
+
+					pattern = "[\\.\\,]";
+					string stos = dou.ToString();
+
+					string[] dou_mass = Regex.Split(stos, pattern, RegexOptions.IgnoreCase);                        //Разделить число на две части
+					it = 0;
+
+
+					Console.WriteLine(Reverse(dot, dou_mass, it));
 					break;
 				case 4:
 					Console.WriteLine("Enter your string separate by magic symbol (all magic symbols will be replaced by << . >> \n");
+
 					string g = Console.ReadLine();
-					string pattern = "\\W+";
-					Console.WriteLine(Reverse(g, pattern));
+					pattern = "\\W+";
+					string[] str_mass = Regex.Split(g, pattern, RegexOptions.IgnoreCase);
+					it = 0;
+
+					Console.WriteLine(Reverse(str_mass, pattern, it));
 					break;
 				default:
 					Console.WriteLine("You enter smth wrong =/");
