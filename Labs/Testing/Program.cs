@@ -1,54 +1,82 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
-namespace Lab_6
+namespace Testing
 {
 	class Program
 	{
 		static void Main(string[] args)
 		{
-			/*
-             6.Створити ліст інтових змінних, який може вміщати тільки 1 і 0,
-             заповнити його з клавіатури. Порахувати кількість 1 і 0. Скопіювати
-             отриманий ліст в масив.
-             */
-			int n;
 
-			do
+			int speed = 116;
+			int s = 116;
+			string line = new string('~', s);
+			Console.WriteLine(line + "\n");
+
+			for(int i = 0; i < s; i++)
 			{
-				Console.Write("Enter number of elements in list: ");
-				n = Convert.ToInt32(Console.ReadLine());
-				if(n <= 0)
-				{
-					Console.WriteLine("Incorrect number of elements. Try again");
-				}
-			} while(n <= 0);
-			List<int> myInts = new List<int>();
-			int a;
+				//for(int j = 3; j <= i; j++)             //< 1st line
+				//{
+				//	Console.Write('-');                     //first part
+				//}
 
-			
-			for(int i = 0; i < n; )
-			{
+				Console.Write(new string('-', i));
 
-				Console.Write("Enter {0} element = ", (i + 1));
-				a = Convert.ToInt32(Console.ReadLine());
+				Console.Write("O--O");
 
-				if(a == 1 || a == 0)
+				Console.Write(new string('-', s-i-1));
+				//for(int j = i + 1; j < s; j++)
+				//{
+				//	Console.Write('-');                     //second part
+				//}
+				Console.WriteLine();                    // >
+
+
+
+				//for(int j = 3; j <= i; j++)             //< 2nd line
+				//{
+				//	Console.Write(' ');                     //first part
+				//}
+				Console.Write(new string('-', i));
+				Console.Write("[==|=]");
+				Console.Write(new string('-', s-i-3));
+				//for(int j = i + 1; j < s - 4; j++)
+				//{
+				//	Console.Write(' ');                     //second part
+				//}
+				Console.WriteLine();                    // >
+
+
+
+				for(int j = 3; j <= i; j++)             //< last line
 				{
-					myInts.Add(a);
-					i++;
+					Console.Write('-');                     //first part
 				}
-				else
+
+				Console.Write("O--O");
+
+				for(int j = i + 1; j < s; j++)
 				{
-					Console.WriteLine("Incorrect data. Might be only \"0\" or \"1\". Try again");
+					Console.Write('-');                     //second part
 				}
+				Console.WriteLine();                    // >
+
+
+				if(i == 0)
+				{
+					Console.Write("\n" + line);
+					Console.SetCursorPosition(Console.CursorLeft = 0, Console.CursorTop - 1);
+				}
+
+
+
+				Console.SetCursorPosition(Console.CursorLeft = 0, Console.CursorTop - 3);
+				Thread.Sleep(speed);
+				speed -= 1;
+
+
 			}
-
-			int counterZero = myInts.BinarySearch(0);
-			Console.WriteLine("In tris List are {0} \"0\" and {1} \"1\"", counterZero, n - counterZero);
-
-
-			Console.ReadLine();
 		}
 	}
 }
