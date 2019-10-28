@@ -4,13 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab_8
+namespace Lab_8_1
 {
 	class Car
 	{
-		public string name;
-		public string color;
-		public int speed;
-		public int year;
+		protected string name;
+		protected string color;
+		protected int speed;
+		protected int year;
+
+		public string Name { get { return name; }}
+		public string Color { get { return name; }}
+		public int Speed { get { return speed; }}
+		public int Year { get { return year; }}
+
+		public void NewCar(){
+			Console.Write("Name = ");
+			name = Console.ReadLine();
+			Console.Write("Color = ");
+			color = Console.ReadLine();
+			Console.Write("Speed = ");
+			speed = Convert.ToInt32(Console.ReadLine());
+			Console.Write("Year = ");
+			year = Convert.ToInt32(Console.ReadLine());
+		}
+
 	}
-}
+}	
+
