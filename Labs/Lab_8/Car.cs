@@ -14,7 +14,7 @@ namespace Lab_8_1
 		protected int year;
 
 		public string Name { get { return name; }}
-		public string Color { get { return name; }}
+		public string Color { get { return color; }}
 		public int Speed { get { return speed; }}
 		public int Year { get { return year; }}
 
