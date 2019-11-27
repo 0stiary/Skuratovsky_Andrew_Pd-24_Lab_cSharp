@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Lab_9
 {
-	class Painter : IDraw
+	class Painter
 	{
-		void IDraw.Draw(){
-
-		}
-		public void DrawSquare(Square square){
-			Console.WriteLine(@"");
+		public static void PaintDraw(IDraw d)
+		{
+			d.Draw();
 		}
 
 	}

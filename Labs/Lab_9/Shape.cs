@@ -8,13 +8,14 @@ namespace Lab_9
 {
 	abstract class Shape
 	{
-		protected string color { get; set; }
-		protected int num_dots { get; }
-		protected string name { get; }
-		protected double per { get; set; }
-		protected double square { get; set; }
+		public string color { get; set; }
+		public int num_dots { get; }
+		public string name { get; }
+		public double per { get; set; }
+		public double square { get; set; }
 		public abstract double Shape_Square();
 		public abstract double Shape_Per();
+		public abstract void Show();
 
 		string[] colors = { "Black", "Blue", "Cyan", "DarkBlue", "DarkCyan", "DarkGray", "DarkGreen", "DarkMagenta", "DarkRed", "DarkYellow",
 			"Gray","Green","Magenta","Red","White","Yellow"};
@@ -127,5 +128,6 @@ namespace Lab_9
 			}
 
 		}
+
 	}
 }

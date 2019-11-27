@@ -24,7 +24,7 @@ namespace Lab_9
 		protected Circle(string name) : base(name, 0)
 		{
 			Random rand = new Random();
-			rad = rand.NextDouble() * rand.Next(1, 100);
+			rad = rand.NextDouble() * rand.Next(1, 50);
 		}
 		protected Circle(string name, double rad) : base(name, 0)
 		{
@@ -49,9 +49,13 @@ namespace Lab_9
 			if(Console.ReadLine() == "y")
 				isRad = true;
 
-			Console.Write("Do you want to set up color? (y / n(other symbols)) -> ");
-			if(Console.ReadLine() == "y")
-				isColor = true;
+
+			if (isRad){
+				Console.Write("Do you want to set up color? (y / n(other symbols)) -> ");
+				if(Console.ReadLine() == "y")
+					isColor = true;
+			}
+			
 
 			Console.WriteLine();
 
@@ -69,7 +73,7 @@ namespace Lab_9
 				{
 					Console.Write("Radius = ");
 					sside = Console.ReadLine();
-				} while(Double.TryParse(sside, out rad) != true);
+				} while(Double.TryParse(sside, out rad) != true || Convert.ToDouble(sside) < 0);
 			}
 
 			if(isColor)
@@ -97,7 +101,7 @@ namespace Lab_9
 			return circle;
 		}
 
-		public void Show()
+		public override void Show()
 		{
 			Console.WriteLine("Name - {0}\n" +
 								"Number of dots = {1}\n" +

@@ -48,9 +48,12 @@ namespace Lab_9
 			if(Console.ReadLine() == "y")
 				isSide = true;
 
-			Console.Write("Do you want to set up color? (y / n(other symbols)) -> ");
-			if(Console.ReadLine() == "y")
-				isColor = true;
+			if(isSide)
+			{
+				Console.Write("Do you want to set up color? (y / n(other symbols)) -> ");
+				if(Console.ReadLine() == "y")
+					isColor = true;
+			}
 
 			Console.WriteLine();
 			do
@@ -67,7 +70,7 @@ namespace Lab_9
 				{
 					Console.Write("Length of side = ");
 					sside = Console.ReadLine();
-				} while(Double.TryParse(sside, out side) != true);
+				} while(Double.TryParse(sside, out side) != true || Convert.ToDouble(sside) < 0);
 			}
 
 			if(isColor)
@@ -95,7 +98,7 @@ namespace Lab_9
 			return square;
 		}
 
-		public void Show()
+		public override void Show()
 		{
 			Console.WriteLine(	"Name - {0}\n" +
 								"Number of dots = {1}\n" +
@@ -107,7 +110,7 @@ namespace Lab_9
 		}
 
 		public void Draw()
-		{;
+		{
 			LetterColor(color);
 			Show();
 			Console.ResetColor();
