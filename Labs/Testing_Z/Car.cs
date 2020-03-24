@@ -10,20 +10,25 @@ namespace Testing_Z
 	{
 		public int seats { get; set; }
 		public List<Passenger> passengers = new List<Passenger>();
-		public event Event MaxSize = () => { Console.WriteLine("Public Taxi is overfull =)"); };
+		public event Event MaxSize;
 
 		public Car() {
 			Random rand = new Random();
-			//seats = rand.Next(12, 33);
-			seats = 4;
+			seats = rand.Next(4, 6);
 		}
 
 		public void AddPass(Passenger passenger) {
 			passengers.Add(passenger);
 			if(passengers.Count() == seats)
 			{
-				MaxSize.Invoke();
-				ShowLast3Pass();
+				if(MaxSize != null){
+					MaxSize.Invoke();
+					ShowLast3Pass();
+				}
+				else
+				{
+					Console.WriteLine("I can't do that");
+				}
 			}
 		}
 

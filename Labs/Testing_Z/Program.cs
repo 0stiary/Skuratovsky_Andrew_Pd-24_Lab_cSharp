@@ -12,13 +12,15 @@ namespace Testing_Z
 		static void Main(string[] args)
 		{
 			Car car = new Car();
-			Passenger passenger = new Passenger();
+
+			//car.MaxSize += () => { Console.WriteLine("Public Taxi is overfull =)"); };
 
 			for(int i = 0; i < car.seats; i++)
 			{
 				Console.WriteLine("New passenger? (y / (other symbols))");
 				if(Console.ReadLine() == "y")
 				{
+					Passenger passenger = new Passenger();
 					do
 					{
 						Console.Write("Name -> ");
@@ -33,6 +35,10 @@ namespace Testing_Z
 					break;
 				}
 			}
+
+
+			Console.ReadLine();
+			Console.ReadLine();
 		}
 	}
 }
